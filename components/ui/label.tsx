@@ -1,1 +1,22 @@
-export function Label({children,htmlFor}:{children:React.ReactNode;htmlFor?:string}){return <label htmlFor={htmlFor} className="mb-1.5 block text-sm font-semibold text-slate-700">{children}</label>}
+import * as React from "react";
+
+interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+  children: React.ReactNode;
+}
+
+export function Label({
+  children,
+  htmlFor,
+  className = "",
+  ...props
+}: LabelProps) {
+  return (
+    <label
+      htmlFor={htmlFor}
+      className={`block text-sm font-medium text-gray-700 ${className}`}
+      {...props}
+    >
+      {children}
+    </label>
+  );
+}
