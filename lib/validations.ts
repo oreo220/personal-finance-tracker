@@ -1,0 +1,6 @@
+import { z } from "zod";
+export const registerSchema=z.object({name:z.string().min(2,"Nama minimal 2 karakter").max(80),email:z.string().email("Email tidak valid"),password:z.string().min(8,"Password minimal 8 karakter")});
+export const accountSchema=z.object({name:z.string().min(1,"Nama sumber dana wajib diisi").max(50),type:z.enum(["BANK","E_WALLET","CASH","OTHER"]),initialBalance:z.coerce.number().min(0,"Saldo tidak boleh negatif"),protectedAmount:z.coerce.number().min(0,"Dana diamankan tidak boleh negatif"),icon:z.string().max(10).optional(),note:z.string().max(200).optional()});
+export const transactionSchema=z.object({type:z.enum(["INCOME","EXPENSE","TRANSFER"]),amount:z.coerce.number().positive("Nominal harus lebih besar dari Rp0"),description:z.string().max(200).optional(),date:z.string(),sourceAccountId:z.string().optional(),destinationAccountId:z.string().optional(),categoryId:z.string().optional()});
+export const goalSchema=z.object({name:z.string().min(1,"Nama target wajib diisi").max(80),targetAmount:z.coerce.number().positive("Target harus lebih besar dari Rp0"),deadline:z.string().optional(),description:z.string().max(500).optional()});
+export const contributionSchema=z.object({goalId:z.string(),accountId:z.string(),amount:z.coerce.number().positive("Nominal harus lebih besar dari Rp0"),note:z.string().max(200).optional()});

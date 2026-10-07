@@ -1,0 +1,1 @@
+import {NextResponse} from "next/server"; import {auth} from "@/auth"; export async function GET(){const s=await auth();if(!s?.user?.id)return NextResponse.json({error:'Unauthorized'},{status:401});return NextResponse.json({ok:true})}

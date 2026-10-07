@@ -1,0 +1,1 @@
+import {NextResponse} from "next/server"; import {auth} from "@/auth"; import {db} from "@/lib/db"; export async function GET(){const s=await auth();if(!s?.user?.id)return NextResponse.json({error:'Unauthorized'},{status:401});return NextResponse.json(await db.category.findMany({where:{userId:s.user.id},orderBy:{name:'asc'}}))}

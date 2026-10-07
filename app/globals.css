@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   LIGHT MODE
+========================= */
+:root {
+  --background: #f5f1eb;
+  --foreground: #171513;
+
+  --card: #ffffff;
+  --card-hover: #faf8f5;
+  --surface: #ffffff;
+  --surface-soft: #eee8e0;
+
+  --border: #ded6cc;
+  --muted: #756d64;
+
+  --primary: #171513;
+  --primary-foreground: #ffffff;
+
+  --accent: #9a6b43;
+  --accent-soft: #eee0d1;
+
+  --success: #47745b;
+  --warning: #a36b2c;
+  --danger: #a94a42;
+}
+
+/* =========================
+   DARK MODE
+========================= */
+.dark {
+  --background: #0d0c0b;
+  --foreground: #f5f0e9;
+
+  --card: #181614;
+  --card-hover: #211e1b;
+  --surface: #181614;
+  --surface-soft: #25211d;
+
+  --border: #39332d;
+  --muted: #a69d93;
+
+  --primary: #f5f0e9;
+  --primary-foreground: #151311;
+
+  --accent: #c39268;
+  --accent-soft: #33271e;
+
+  --success: #82a98c;
+  --warning: #d09a5e;
+  --danger: #d47b72;
+}
+
+/* =========================
+   BASE
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  background: var(--background);
+  color: var(--foreground);
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  transition:
+    background-color 220ms ease,
+    color 220ms ease;
+}
+
+/* Pastikan heading tidak menjadi putih di light mode */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--foreground);
+}
+
+/* Paragraf */
+p {
+  color: inherit;
+}
+
+/* Link */
+a {
+  color: inherit;
+}
+
+/* Form */
+input,
+textarea,
+select {
+  background-color: var(--card);
+  color: var(--foreground);
+  border-color: var(--border);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+}
+
+/* Surface */
+.surface {
+  background-color: var(--surface);
+  color: var(--foreground);
+
+  border: 1px solid var(--border);
+  border-radius: 24px;
+
+  box-shadow: 0 8px 30px rgba(30, 24, 19, 0.055);
+
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.dark .surface {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.28);
+}
+
+/* Dark mode selection */
+::selection {
+  background: var(--accent-soft);
+  color: var(--foreground);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* Font display */
+.font-display {
+  font-family: "DM Serif Display", serif;
+}
